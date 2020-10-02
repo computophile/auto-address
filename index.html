@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Place Autocomplete Address Form</title>
+
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+
+<body>
+  <div id="locationField">
+    <input id="autocomplete" placeholder="Enter your address" onFocus="initAutocomplete()" type="text" />
+  </div>
+
+  <!-- Note: The address components in this sample are typical. You might need to adjust them for
+               the locations relevant to your app. For more information, see
+         https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+    -->
+
+  <table id="address">
+    <tr>
+      <td class="label">Street address</td>
+      <td class="slimField">
+        <input class="field" id="street_number" disabled="false" />
+      </td>
+      <td class="wideField" colspan="2">
+        <input class="field" id="route" disabled="false" />
+      </td>
+    </tr>
+    <tr>
+      <td class="label">City</td>
+      <td class="wideField" colspan="3">
+        <input class="field" id="locality" disabled="false" />
+      </td>
+    </tr>
+    <tr>
+      <td class="label">State</td>
+      <td class="slimField">
+        <input class="field" id="administrative_area_level_1" disabled="false" />
+      </td>
+      <td class="label">Zip code</td>
+      <td class="wideField">
+        <input class="field" id="postal_code" disabled="false" />
+      </td>
+    </tr>
+    <tr>
+      <td class="label">Country</td>
+      <td class="wideField" colspan="3">
+        <input class="field" id="country" disabled="false" />
+      </td>
+    </tr>
+  </table>
+
+
+  <div class="woocommerce-billing-fields__field-wrapper">
+
+
+    <p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="billing_country_field"
+      data-priority="40"><label for="billing_country" class="">Country / Region&nbsp;<abbr class="required"
+          title="required">*</abbr></label><span class="woocommerce-input-wrapper"><strong>Canada</strong><input
+          type="hidden" name="billing_country" id="billing_country" value="CA" autocomplete="country"
+          class="country_to_state" readonly="readonly"></span></p>
+
+    <p class="form-row address-field validate-required form-row-wide" id="billing_address_1_field" data-priority="50">
+      <label for="billing_address_1" class="">Street address&nbsp;<abbr class="required"
+          title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="text" class="input-text "
+          name="billing_address_1" id="billing_address_1" placeholder="House number and street name" value=""
+          autocomplete="address-line1" data-placeholder="House number and street name"></span></p>
+
+    <p class="form-row address-field form-row-wide" id="billing_address_2_field" data-priority="60"><label
+        for="billing_address_2" class="screen-reader-text">Apartment, suite, unit, etc. (optional)&nbsp;<span
+          class="optional">(optional)</span></label><span class="woocommerce-input-wrapper"><input type="text"
+          class="input-text " name="billing_address_2" id="billing_address_2"
+          placeholder="Apartment, suite, unit, etc. (optional)" value="" autocomplete="address-line2"
+          data-placeholder="Apartment, suite, unit, etc. (optional)"></span></p>
+
+    <p class="form-row address-field validate-required form-row-wide" id="billing_city_field" data-priority="70"
+      data-o_class="form-row form-row-wide address-field validate-required"><label for="billing_city" class="">Town /
+        City&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input
+          type="text" class="input-text " name="billing_city" id="billing_city" placeholder="" value=""
+          autocomplete="address-level2"></span></p>
+
+    <p class="form-row address-field validate-required validate-state form-row-wide" id="billing_state_field"
+      data-priority="80" data-o_class="form-row form-row-wide address-field validate-required validate-state"><label
+        for="billing_state" class="">Province&nbsp;<abbr class="required" title="required">*</abbr></label><span
+        class="woocommerce-input-wrapper"><select name="billing_state" id="billing_state"
+          class="state_select select2-hidden-accessible" autocomplete="address-level1"
+          data-placeholder="Select an option…" data-input-classes="" tabindex="-1" aria-hidden="true">
+          <option value="">Select an option…</option>
+          <option value="AB">Alberta</option>
+          <option value="BC">British Columbia</option>
+          <option value="MB">Manitoba</option>
+          <option value="NB">New Brunswick</option>
+          <option value="NL">Newfoundland and Labrador</option>
+          <option value="NT">Northwest Territories</option>
+          <option value="NS">Nova Scotia</option>
+          <option value="NU">Nunavut</option>
+          <option value="ON">Ontario</option>
+          <option value="PE">Prince Edward Island</option>
+          <option value="QC">Quebec</option>
+          <option value="SK">Saskatchewan</option>
+          <option value="YT">Yukon Territory</option>
+        </select><span
+          class="select2 select2-container select2-container--default select2-container--above select2-container--focus"
+          dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single"
+              aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-billing_state-container"
+              role="combobox"><span class="select2-selection__rendered" id="select2-billing_state-container"
+                role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Select an
+                  option…</span></span><span class="select2-selection__arrow" role="presentation"><b
+                  role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span></span></p>
+
+    <p class="form-row address-field validate-required validate-postcode form-row-wide" id="billing_postcode_field"
+      data-priority="90" data-o_class="form-row form-row-wide address-field validate-required validate-postcode"><label
+        for="billing_postcode" class="">Postal code&nbsp;<abbr class="required" title="required">*</abbr></label><span
+        class="woocommerce-input-wrapper"><input type="text" class="input-text " name="billing_postcode"
+          id="billing_postcode" placeholder="" value="" autocomplete="postal-code"></span></p>
+
+    <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100"><label
+        for="billing_phone" class="">Phone&nbsp;<abbr class="required" title="required">*</abbr></label><span
+        class="woocommerce-input-wrapper"><input type="tel" class="input-text " name="billing_phone" id="billing_phone"
+          placeholder="" value="" autocomplete="tel"></span></p>
+
+    <p class="form-row form-row-wide validate-required validate-email woocommerce-validated" id="billing_email_field"
+      data-priority="110"><label for="billing_email" class="">Email address&nbsp;<abbr class="required"
+          title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="email" class="input-text "
+          name="billing_email" id="billing_email" placeholder="" value="" autocomplete="email"></span></p>
+  </div>
+  <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDduQZ1rOhBaEdntAfL6K3nkJsT_QKTQU8&libraries=places">
+  </script>
+  <script src="./app.js"></script>
+
+</body>
+
+</html>
+
+
+
